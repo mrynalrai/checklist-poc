@@ -1,0 +1,24 @@
+@import './design-tokens/scss_variables.scss';
+
+.App {
+  text-align: center;
+  height: 100%;
+  font-size: $font-size-medium;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 900;
+    src: local('Roboto'), url(./fonts/Roboto-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 900;
+    src: local('Roboto'), url(./fonts/Roboto-Black.ttf) format('truetype');
+}
