@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -22,12 +23,11 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Home = props => {
+const Home = ({ player, updatePlayer }) => {
 
     const muiClasses = useStyles();
-    const [ player, setPlayer ] = useState('Messi');
     const handleChange = (event) => {
-        setPlayer(event.target.value);
+        updatePlayer(event.target.value);
     };
 
     return (
@@ -52,7 +52,7 @@ const Home = props => {
                         className={
                             `${muiClasses.button} ${classes['Home_button']}`
                         }>
-                        <Link to={`/${player}`}>Submit</Link>
+                        <Link to='/checklist'>Submit</Link>
                     </Button>
 
                     </div>
@@ -62,4 +62,17 @@ const Home = props => {
     )
 }
 
-export default Home;
+const mapStateToProps = (state /*, ownProps*/) => {
+    return {
+      player: state.player
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      // dispatching plain actions
+      updatePlayer: (name) => dispatch({ type: 'playerUpdated', payload: name })
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

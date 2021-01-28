@@ -16,7 +16,7 @@ function App() {
             </Route>
             <Route path='/result' exact component={Result}>
             </Route>
-            <Route path='/:player' component={Checklist} >
+            <Route path='/checklist' component={Checklist} >
             </Route>
             <Route path="*" component={NoMatch}>
             </Route>

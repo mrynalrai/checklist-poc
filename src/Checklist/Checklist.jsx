@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import classes from './Checklist.module.scss';
@@ -44,27 +45,42 @@ const Checklist = props => {
 
     return (
         <div className={classes['Checklist']}>
-            {props.match.params && <h1>{props.match.params.player}</h1>}
-            <div className={{ display: 'flex' }}>
-                <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">Assign responsibility</FormLabel>
-                    <FormGroup>
-                        <FormControlLabel
-                            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                            label="Gilad Gray"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-                            label="Jason Killian"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
-                            label="Antoine Llorca"
-                        />
-                    </FormGroup>
-                    <FormHelperText>Be careful</FormHelperText>
-                </FormControl>
-            </div>
+            {props.player ? (
+                <>
+                <h1>{props.player}</h1>
+                <div className={{ display: 'flex' }}>
+                    <FormControl component="fieldset" className={classes.formControl}>
+                        <FormLabel component="legend">Assign responsibility</FormLabel>
+                        <FormGroup>
+                            <FormControlLabel
+                                control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+                                label="Gilad Gray"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
+                                label="Jason Killian"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
+                                label="Antoine Llorca"
+                            />
+                        </FormGroup>
+                        <FormHelperText>Be careful</FormHelperText>
+                    </FormControl>
+                </div>
+                </>
+            ) : <p> Please select a player</p>}
+            {props.player && (
+                <Button
+                variant="contained"
+                className={
+                    `${muiClasses.button} ${classes['Checklist_button']}`
+                }
+                onClick={handleSubmit}
+            >
+                Submit
+            </Button>
+            )}
             <Button
                 variant="contained"
                 className={
@@ -74,17 +90,14 @@ const Checklist = props => {
             >
                 Back to Landing Page
             </Button>
-            <Button
-                variant="contained"
-                className={
-                    `${muiClasses.button} ${classes['Checklist_button']}`
-                }
-                onClick={handleSubmit}
-            >
-                Submit
-            </Button>
         </div>
     )
 }
 
-export default Checklist;
+const mapStateToProps = (state) => {
+    return {
+        player: state.player
+    }
+}
+
+export default connect(mapStateToProps) (Checklist);

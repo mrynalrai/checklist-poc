@@ -16,7 +16,7 @@ const Result = (props) => {
     console.log(props);
 
     const handleBack = () => {
-        props.history.push('/Messi');
+        props.history.push('/checklist');
     }
     return (
         <div>
