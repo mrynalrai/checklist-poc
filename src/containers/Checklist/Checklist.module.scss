@@ -1,9 +1,10 @@
-@import "../design-tokens//scss_variables.scss";
+@import "../../design-tokens//scss_variables.scss";
 
 .Checklist {
   display: flex;
   flex-direction: column;
   align-items: center;
   &_button {
+    color: rgba(0, 0, 0, 0.87);
   }
 }

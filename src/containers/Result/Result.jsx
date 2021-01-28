@@ -6,7 +6,9 @@ const useStyles = makeStyles((theme) => ({
     button: {
         backgroundColor: '#fff',
         marginTop: 16,
-        marginBottom: 16
+        marginBottom: 16,
+        color: '#000',
+        opacity: 0.8
     }
 }));
 

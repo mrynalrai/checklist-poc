@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import classes from './App.module.scss';
 import Layout from './hoc/Layout/Layout';
-import Home from './Home/Home';
+import Home from './containers/Home/Home';
 import NoMatch from "./components/NoMatch/NoMatch";
-import Checklist from './Checklist/Checklist';
-import Result from './Result/Result';
+import Checklist from './containers/Checklist/Checklist';
+import Result from './containers/Result/Result';
 import ErrorBoundary from './hoc/ErrorBoundary/ErrorBoundary';
 
 function App() {
