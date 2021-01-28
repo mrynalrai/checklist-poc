@@ -5,10 +5,12 @@ import Home from './Home/Home';
 import NoMatch from "./components/NoMatch/NoMatch";
 import Checklist from './Checklist/Checklist';
 import Result from './Result/Result';
+import ErrorBoundary from './hoc/ErrorBoundary/ErrorBoundary';
 
 function App() {
   return (
     <div className={classes["App"]}>
+      <ErrorBoundary>
       <Layout>
         <BrowserRouter>
           <Switch>
@@ -23,6 +25,8 @@ function App() {
           </Switch>
         </BrowserRouter>
       </Layout>
+
+      </ErrorBoundary>
     </div>
   );
 }
