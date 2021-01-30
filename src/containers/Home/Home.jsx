@@ -32,7 +32,7 @@ const Home = ({ player, updatePlayer }) => {
     return (
         <div className={classes['Home']}>
             <Grid container>
-                <Grid item xs={12} direction='column'>
+                <Grid item container xs={12} direction='column'>
                     <FormControl className={muiClasses.formControl}>
                     <InputLabel id="demo-simple-select-label">Player Name</InputLabel>
                     <Select
