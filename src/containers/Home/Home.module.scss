@@ -1,6 +1,10 @@
 @import "../../design-tokens//scss_variables.scss";
 
 .Home {
+    &_grid {
+        width: calc(100% - 2 * #{$space-medium}) !important;
+        margin: $space-medium;
+    }
     &_button {
         a {
             text-decoration: none;

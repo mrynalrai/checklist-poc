@@ -1,25 +1,29 @@
 @import '../../design-tokens/scss_variables.scss';
 
-main {
-    flex: 1 0 auto;
-    background-color: #f0ebf8;
-    padding: $space-medium;
-}
-footer {
-    flex-shrink: 0;
-    font-size: $font-size-medium;
-    padding: $space-medium;
-}
-header {
-    padding: $space-medium;
-    p {
-        font-size: $font-size-large;
-        margin: 0;
-    }
-}
-
 .Layout {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+p {
+    margin: 0;
+    padding: $space-medium;
+}
+
+header {
+    p {
+        font-size: $font-size-large;
+    }
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: #f0ebf8;
+}
+footer {
+    flex-shrink: 0;
+    p {
+        font-size: $font-size-medium;
+    }
 }

@@ -1,20 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classes from './Layout.module.scss';
 
-const Layout = (props) => {
+const Layout = ({ isIframe, children}) => {
+
+    console.log(isIframe);
     return(
         <div className={classes['Layout']}>
-            <header>
-                <p>Welcome to my POC</p>
-            </header>
+            { !isIframe && (
+                <header>
+                    <p>Welcome to my POC</p>
+                </header>
+            )}
             <main>
-            {props.children}
+            {children}
             </main>
-            <footer>
-                Copyright&copy; Mrinal 2021
-            </footer>
+            { !isIframe && (
+                <footer>
+                    <p>Copyright&copy; Mrinal 2021</p>
+                </footer>
+            )}
         </div>
     )
 }
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        isIframe: state.isIframe
+    }
+}
+
+export default connect(mapStateToProps, null)(Layout);

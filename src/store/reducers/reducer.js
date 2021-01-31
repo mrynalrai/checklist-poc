@@ -1,4 +1,5 @@
 const initialState = {
+    isIframe: false,
     player: '',
     messiChecklist: [
         { id: 'mostGoals', checked: false },
@@ -17,6 +18,11 @@ const initialState = {
     // The reducer normally looks at the action type field to decide what happens
     switch (action.type) {
       // Do something here based on the different types of actions
+      case 'iframeUpdated':
+          return {
+              ...state,
+              isIframe: action.payload
+          }
       case 'playerUpdated':
           return {
               ...state,

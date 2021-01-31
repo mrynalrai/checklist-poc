@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Home = ({ player, updatePlayer }) => {
+const Home = ({ player, updatePlayer, isIframe }) => {
 
     const muiClasses = useStyles();
     const handleChange = (event) => {
@@ -30,31 +30,42 @@ const Home = ({ player, updatePlayer }) => {
     };
 
     return (
-        <div className={classes['Home']}>
-            <Grid container>
-                <Grid item container xs={12} direction='column'>
-                    <FormControl className={muiClasses.formControl}>
-                    <InputLabel id="demo-simple-select-label">Player Name</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={player}
-                        onChange={handleChange}
-                    >
-                        <MenuItem value={'Messi'}>Messi</MenuItem>
-                        <MenuItem value={'Ronaldo'}>Ronaldo</MenuItem>
-                    </Select>
-                    </FormControl>
-                    <div>
-                    <Button 
-                        variant="contained" 
-                        className={
-                            `${muiClasses.button} ${classes['Home_button']}`
-                        }>
-                        <Link to='/checklist'>Submit</Link>
-                    </Button>
-
-                    </div>
+        <div className={classes['Home']} >
+            <Grid container direction='column' className={classes['Home_grid']}>
+                <Grid item  xs={12}>
+                    { !isIframe ? (
+                      <>
+                      <FormControl className={muiClasses.formControl}>
+                      <InputLabel id="demo-simple-select-label">Player Name</InputLabel>
+                      <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={player}
+                          onChange={handleChange}
+                      >
+                          <MenuItem value={'Messi'}>Messi</MenuItem>
+                          <MenuItem value={'Ronaldo'}>Ronaldo</MenuItem>
+                      </Select>
+                      </FormControl>
+                      <div>
+                      <Button 
+                          variant="contained" 
+                          className={
+                              `${muiClasses.button} ${classes['Home_button']}`
+                          }>
+                          <Link to='/checklist'>Submit</Link>
+                      </Button>
+                      </div>
+                      </>
+                    ) :
+                    (
+                      <iframe id="inlineFrameExample"
+                        title="Inline Frame Example"
+                        width="300"
+                        height="200"
+                        src="https://checklist-poc-iframe.netlify.app/">
+                    </iframe>
+                    )}
                 </Grid>
             </Grid>
         </div>
@@ -63,7 +74,8 @@ const Home = ({ player, updatePlayer }) => {
 
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
-      player: state.player
+      player: state.player,
+      isIframe: state.isIframe
     }
   }
   

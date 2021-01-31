@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { createStore } from 'redux';
-import appReducer from './store/reducer';
+import appReducer from './store/reducers/reducer';
 // import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'; 
 
 // const theme = createMuiTheme({
