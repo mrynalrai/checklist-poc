@@ -8,6 +8,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+// import { jsPDF } from 'jspdf';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -36,8 +37,30 @@ const Checklist = props => {
         props.history.push('/result');
     }
 
+    /**
+     * jsPDF sample
+     */
+    // let htmlString;
+    // setTimeout(() => {
+    //     // htmlString = document.getElementById('html2pdf');
+    //     // htmlString = `<a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/print'> hi</a>`
+    //     console.log(htmlString);
+    // }, 2000);
+
+    // let doc = new jsPDF();
+
+    // const downloadPDF = () => {
+    //     doc.html(htmlString, {
+    //         callback: function (doc) {
+    //             doc.save();
+    //         },
+    //         x: 10,
+    //         y: 10
+    //     });
+    // }
+
     return (
-        <div className={classes['Checklist']}>
+        <div id='html2pdf' className={classes['Checklist']}>
             {props.player ? (
                 <>
                     <h1>{props.player}</h1>
@@ -83,6 +106,9 @@ const Checklist = props => {
             >
                 Back to Landing Page
             </Button>
+            {/* <Button onClick={downloadPDF}>
+                Download PDF
+            </Button> */}
         </div>
     )
 }

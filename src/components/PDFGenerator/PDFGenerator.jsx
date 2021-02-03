@@ -1,35 +1,49 @@
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+import logo from '../../assets/images/BASF_logo.png';
 
-// Create styles
 const styles = StyleSheet.create({
     page: {
-        flexDirection: 'row',
-        backgroundColor: '#E4E4E4'
+        backgroundColor: '#fff',
+        flexDirection: 'column',
+        alignItems: 'center'
     },
-    section: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1
+    header: {
+        backgroundColor: '#f8991d',
+        width: '100%',
+        justifyContent: 'flex-start'
+    },
+    logo: {
+        height: 80,
+        width: 160
+    },
+    body: {
+        paddingTop: 35,
+        paddingBottom: 65,
+        paddingHorizontal: 35
     }
 });
 
 // Create Document Component
-const PDFGenerator = (props) => {
+const PDFGenerator = (props) => (
+    <Document>
+        <Page style={styles.page}>
+            <View style={styles.header}>
+                <Image style={styles.logo} src={logo}>
 
-    console.log(props);
-
-    return (
-        <Document>
-            <Page size="A4" style={styles.page}>
-                <View style={styles.section}>
-                    <Text>Section #1</Text>
-                </View>
-                <View style={styles.section}>
-                    <Text>Section #2</Text>
-                </View>
-            </Page>
-        </Document>
-    );
-}
+                </Image>
+            </View>
+            <View style={styles.body}>
+                {
+                    props.player === 'Messi' ?
+                        <Text>
+                            {props.player}
+                        </Text> : null
+                }
+            </View>
+        </Page>
+        <Page></Page>
+        <Page></Page>
+    </Document>
+);
 
 export default PDFGenerator; 
